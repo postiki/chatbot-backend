@@ -3,7 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "esModuleInterop": true,
-    "outDir": "./build",
+    "outDir": "./public",
     "strict": true,
     "sourceMap": true
   },
