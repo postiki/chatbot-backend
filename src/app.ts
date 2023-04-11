@@ -91,6 +91,9 @@ bot.launch();
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.send('Hey this is my API running 🥳')
+})
 
 const port = 3000;
 app.listen(port, () => {
