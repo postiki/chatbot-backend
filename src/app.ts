@@ -30,7 +30,7 @@ const configuration = new Configuration({
     organization: "org-thvBFUANUYseKPLbAFwsuWjA",
     apiKey: process.env.OPENAI_API_KEY || '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',
 });
-// const openai = new OpenAIApi(configuration);
+const openai = new OpenAIApi(configuration);
 // // const response = await openai.listEngines();
 const api_url = "https://api.openai.com/v1/chat/completions";
 
