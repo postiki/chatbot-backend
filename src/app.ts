@@ -5,7 +5,7 @@ import {Configuration, OpenAIApi} from "openai";
 import axios from 'axios';
 
 
-const mongoUrl = 'mongodb://localhost:27017/mydatabase';
+const mongoUrl = 'mongodb+srv://postiki:VSVnXIp7Ga4Ft0oG@cluster0.lkbdg.mongodb.net/chatbot';
 mongoose.connect(mongoUrl);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Ошибка соединения с MongoDB:'));
