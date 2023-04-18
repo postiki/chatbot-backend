@@ -28,27 +28,39 @@ interface UserInterface {
     paid: boolean;
     subscriptionEndAt: string;
     limits: {
+        maxSymbols: number;
         symbolTotal: number;
     },
+    cacheLength: number;
     userCache: Array<string>;
     chatCache: Array<string>;
 }
-
 const userSchema = new mongoose.Schema<UserInterface>({
     username: {type: String, required: true},
     chatId: {type: Number, required: true},
     paid: {type: Boolean, default: false},
     subscriptionEndAt: {type: String, default: null},
     limits: {
+        maxSymbols: {type: Number, default: 10000},
         symbolTotal: {type: Number, default: 0}
     },
+    cacheLength: {type: Number, default: 2},
     userCache: [{type: String, default: null}],
     chatCache: [{type: String, default: null}]
 });
 const User = mongoose.model<UserInterface>('User', userSchema);
 
+
 const api_url = "https://api.openai.com/v1/chat/completions";
-const postPrompt = async (userHistory: Array<string>, chatHistory: Array<string>): Promise<string | undefined> => {
+interface PromptResult {
+    text: string;
+    cost: {
+        prompt_tokens: number;
+        completion_tokens: number;
+        total_tokens: number;
+    }
+}
+const postPrompt = async (userHistory: Array<string>, chatHistory: Array<string>): Promise<PromptResult | undefined> => {
     const userMessages = userHistory.map(props => {
         return {"role": "user", "content": `${props}`}
     });
@@ -62,23 +74,19 @@ const postPrompt = async (userHistory: Array<string>, chatHistory: Array<string>
         for (let i = 0; i < maxLength; i++) {
             if (userMessages[i]) {
                 result.push(userMessages[i]);
-                console.log(userMessages[i])
             }
             if (chatMessages[i]) {
                 result.push(chatMessages[i]);
-                console.log(chatMessages[i]);
             }
         }
         return [...result];
     }
-
 
     const data = {
         model: 'gpt-3.5-turbo',
         messages: interleaveMessages(userMessages, chatMessages),
         temperature: 0.7
     };
-
 
     try {
         const result: any = await axios.post(api_url, data, {
@@ -88,7 +96,7 @@ const postPrompt = async (userHistory: Array<string>, chatHistory: Array<string>
             }
         })
 
-        return result.data.choices[0].message.content
+        return {text: result.data.choices[0].message.content, cost: result.data.usage}
     } catch (e) {
         console.error(e)
     }
@@ -118,11 +126,47 @@ bot.start(async (ctx: Context): Promise<void> => {
     }
 });
 
+
+bot.command('cachelength', async (ctx: Context) => {
+    try {
+        await ctx.reply('Chose a cache length', Markup.inlineKeyboard([
+            Markup.button.callback('2', 'length2'),
+            Markup.button.callback('3', 'length3'),
+            Markup.button.callback('4', 'length4'),
+            Markup.button.callback('5', 'length5'),
+        ]));
+    } catch (e) {
+        console.error(e)
+    }
+})
+bot.action('length2', async (ctx: Context) => {
+    const chat = ctx.chat
+    await User.updateOne({chatId: chat?.id}, {cacheLength: 2})
+    await ctx.reply('Length set to 2')
+})
+bot.action('length3', async (ctx: Context) => {
+    const chat = ctx.chat
+    await User.updateOne({chatId: chat?.id}, {cacheLength: 3})
+    await ctx.reply('Length set to 3')
+})
+bot.action('length4', async (ctx: Context) => {
+    const chat = ctx.chat
+    await User.updateOne({chatId: chat?.id}, {cacheLength: 4})
+    await ctx.reply('Length set to 4')
+})
+bot.action('length5', async (ctx: Context) => {
+    const chat = ctx.chat
+    await User.updateOne({chatId: chat?.id}, {cacheLength: 5})
+    await ctx.reply('Length set to 5')
+})
+
+
 bot.command('payment', async (ctx: Context) => {
     await ctx.reply('de', Markup.inlineKeyboard([
         [Markup.button.url('linktext', 'google.com')]
     ]));
 })
+
 
 bot.on('message', async (ctx: Context) => {
     const message: any = ctx.message
@@ -130,20 +174,27 @@ bot.on('message', async (ctx: Context) => {
     try {
         const user = await User.findOne({chatId: chat?.id})
         if (user) {
-            const userMessages = user.userCache.length < 5 ? user.userCache : user.userCache.slice(-4)
-            const chatMessages = user.chatCache.length < 5 ? user.chatCache : user.chatCache.slice(-4)
+            const userMessages = user.userCache.length < user.cacheLength ? user.userCache : user.userCache.slice(-user.cacheLength)
+            const chatMessages = user.chatCache.length < user.cacheLength ? user.chatCache : user.chatCache.slice(-user.cacheLength)
 
-            if (user.limits.symbolTotal < 10000) {
+            if (user.limits.symbolTotal < user.limits.maxSymbols) {
                 const result = await postPrompt(userMessages.concat([message.text]), chatMessages);
                 await User.updateOne(
                     {chatId: chat?.id},
                     {
                         $inc: {"limits.symbolTotal": (message.text).length},
-                        chatCache: chatMessages.concat(result || ['']),
+                        chatCache: chatMessages.concat(result?.text || ''),
                         userCache: userMessages.concat(message.text)
                     },
                 )
-                await ctx.reply(result || 'error');
+                await ctx.reply(
+                    `${result?.text}
+                    
+                    totalTokens: 
+                    propmt_tokens:${result?.cost.prompt_tokens}, 
+                    completion_tokens:${result?.cost.completion_tokens}, 
+                    total_tokens:${result?.cost.total_tokens}`
+                );
             } else {
                 await ctx.reply('Subscription end!')
             }
@@ -152,5 +203,6 @@ bot.on('message', async (ctx: Context) => {
         console.error(e)
     }
 });
+
 
 bot.launch();
