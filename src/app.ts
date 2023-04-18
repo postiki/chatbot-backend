@@ -16,7 +16,7 @@ const {MONGO_URL, TELEGRAM_API_KEY} = process.env;
 const mongoUrl = MONGO_URL;
 mongoose.connect(mongoUrl || '');
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Ошибка соединения с MongoDB:'));
+db.on('error', console.error.bind(console, 'Ошибка соединения с MongoDB!'));
 db.once('open', () => {
     console.log('Успешное подключение к MongoDB!');
 });
@@ -29,7 +29,9 @@ interface UserInterface {
     subscriptionEndAt: string;
     limits: {
         symbolTotal: number;
-    }
+    },
+    userCache: Array<string>;
+    chatCache: Array<string>;
 }
 
 const userSchema = new mongoose.Schema<UserInterface>({
@@ -39,18 +41,44 @@ const userSchema = new mongoose.Schema<UserInterface>({
     subscriptionEndAt: {type: String, default: null},
     limits: {
         symbolTotal: {type: Number, default: 0}
-    }
+    },
+    userCache: [{type: String, default: null}],
+    chatCache: [{type: String, default: null}]
 });
 const User = mongoose.model<UserInterface>('User', userSchema);
 
-
 const api_url = "https://api.openai.com/v1/chat/completions";
-const postPrompt = async (message: string) => {
+const postPrompt = async (userHistory: Array<string>, chatHistory: Array<string>): Promise<string | undefined> => {
+    const userMessages = userHistory.map(props => {
+        return {"role": "user", "content": `${props}`}
+    });
+    const chatMessages = chatHistory.map(props => {
+        return {"role": "assistant", "content": `${props}`}
+    });
+
+    function interleaveMessages(userMessages: { role: string, content: string }[], chatMessages: { role: string, content: string }[]): { role: string, content: string }[] {
+        const result: { role: string, content: string }[] = [];
+        const maxLength = Math.max(userMessages.length, chatMessages.length);
+        for (let i = 0; i < maxLength; i++) {
+            if (userMessages[i]) {
+                result.push(userMessages[i]);
+                console.log(userMessages[i])
+            }
+            if (chatMessages[i]) {
+                result.push(chatMessages[i]);
+                console.log(chatMessages[i]);
+            }
+        }
+        return [...result];
+    }
+
+
     const data = {
         model: 'gpt-3.5-turbo',
-        messages: [{"role": "user", "content": `${message}`}],
+        messages: interleaveMessages(userMessages, chatMessages),
         temperature: 0.7
     };
+
 
     try {
         const result: any = await axios.post(api_url, data, {
@@ -102,13 +130,20 @@ bot.on('message', async (ctx: Context) => {
     try {
         const user = await User.findOne({chatId: chat?.id})
         if (user) {
+            const userMessages = user.userCache.length < 5 ? user.userCache : user.userCache.slice(-4)
+            const chatMessages = user.chatCache.length < 5 ? user.chatCache : user.chatCache.slice(-4)
+
             if (user.limits.symbolTotal < 10000) {
-                const result = await postPrompt(message.text);
+                const result = await postPrompt(userMessages.concat([message.text]), chatMessages);
                 await User.updateOne(
                     {chatId: chat?.id},
-                    {$inc: {"limits.symbolTotal": (message.text).length}},
+                    {
+                        $inc: {"limits.symbolTotal": (message.text).length},
+                        chatCache: chatMessages.concat(result || ['']),
+                        userCache: userMessages.concat(message.text)
+                    },
                 )
-                await ctx.reply(result);
+                await ctx.reply(result || 'error');
             } else {
                 await ctx.reply('Subscription end!')
             }
