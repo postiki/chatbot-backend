@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {Context, Telegraf} from "telegraf";
+import {Context, Markup, Telegraf} from "telegraf";
 import axios from 'axios';
 import * as dotenv from 'dotenv'
 
@@ -25,11 +25,21 @@ db.once('open', () => {
 interface UserInterface {
     username: string;
     chatId: number;
+    paid: boolean;
+    subscriptionEndAt: string;
+    limits: {
+        symbolTotal: number;
+    }
 }
 
 const userSchema = new mongoose.Schema<UserInterface>({
     username: {type: String, required: true},
     chatId: {type: Number, required: true},
+    paid: {type: Boolean, default: false},
+    subscriptionEndAt: {type: String, default: null},
+    limits: {
+        symbolTotal: {type: Number, default: 0}
+    }
 });
 const User = mongoose.model<UserInterface>('User', userSchema);
 
@@ -68,7 +78,7 @@ bot.start(async (ctx: Context): Promise<void> => {
         const existingUser: UserInterface | null = await User.findOne({chatId: ctx.chat.id});
 
         if (!existingUser) {
-            const user: UserInterface = await User.create({
+            await User.create({
                 username: chatUsername,
                 chatId: ctx.chat.id,
             });
@@ -80,12 +90,32 @@ bot.start(async (ctx: Context): Promise<void> => {
     }
 });
 
+bot.command('payment', async (ctx: Context) => {
+    await ctx.reply('de', Markup.inlineKeyboard([
+        [Markup.button.url('linktext', 'google.com')]
+    ]));
+})
+
 bot.on('message', async (ctx: Context) => {
-    const message: any = ctx.message;
-
-    const asyncResult = await postPrompt(message.text);
-
-    await ctx.reply(asyncResult);
+    const message: any = ctx.message
+    const chat = ctx.chat
+    try {
+        const user = await User.findOne({chatId: chat?.id})
+        if (user) {
+            if (user.limits.symbolTotal < 10000) {
+                const result = await postPrompt(message.text);
+                await User.updateOne(
+                    {chatId: chat?.id},
+                    {$inc: {"limits.symbolTotal": (message.text).length}},
+                )
+                await ctx.reply(result);
+            } else {
+                await ctx.reply('Subscription end!')
+            }
+        }
+    } catch (e) {
+        console.error(e)
+    }
 });
 
 bot.launch();
