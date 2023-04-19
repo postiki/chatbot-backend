@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="reinit master branch" />
+    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="update .idea">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/chatbot-backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chatbot-backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app.js.map" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Oe98FRrjlzKqtF4M6FhduFweQB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -36,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681910019060</updated>
-      <workItem from="1681910020069" duration="301000" />
+      <workItem from="1681910020069" duration="495000" />
     </task>
     <task id="LOCAL-00001" summary="reinit master branch">
       <created>1681910253110</created>
@@ -45,7 +57,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681910253110</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update .idea">
+      <created>1681910490168</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681910490168</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -64,6 +83,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reinit master branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="reinit master branch" />
+    <MESSAGE value="update .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="update .idea" />
   </component>
 </project>
