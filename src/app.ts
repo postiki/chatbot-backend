@@ -35,6 +35,7 @@ interface UserInterface {
     userCache: Array<string>;
     chatCache: Array<string>;
 }
+
 const userSchema = new mongoose.Schema<UserInterface>({
     username: {type: String, required: true},
     chatId: {type: Number, required: true},
@@ -52,6 +53,7 @@ const User = mongoose.model<UserInterface>('User', userSchema);
 
 
 const api_url = "https://api.openai.com/v1/chat/completions";
+
 interface PromptResult {
     text: string;
     cost: {
@@ -60,6 +62,7 @@ interface PromptResult {
         total_tokens: number;
     }
 }
+
 const postPrompt = async (userHistory: Array<string>, chatHistory: Array<string>): Promise<PromptResult | undefined> => {
     const userMessages = userHistory.map(props => {
         return {"role": "user", "content": `${props}`}
@@ -114,9 +117,14 @@ bot.start(async (ctx: Context): Promise<void> => {
         const existingUser: UserInterface | null = await User.findOne({chatId: ctx.chat.id});
 
         if (!existingUser) {
+            const currentTime = new Date();
+            const nextMonth = new Date(currentTime.getFullYear(), currentTime.getMonth() + 1, currentTime.getDate(), currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
+
             await User.create({
                 username: chatUsername,
                 chatId: ctx.chat.id,
+                subscriptionEndAt: nextMonth,
+
             });
 
             await ctx.reply('Привет! Я бот!');
@@ -173,12 +181,14 @@ bot.on('message', async (ctx: Context) => {
     const chat = ctx.chat
     try {
         const user = await User.findOne({chatId: chat?.id})
+
         if (user) {
             const userMessages = user.userCache.length < user.cacheLength ? user.userCache : user.userCache.slice(-user.cacheLength)
             const chatMessages = user.chatCache.length < user.cacheLength ? user.chatCache : user.chatCache.slice(-user.cacheLength)
 
-            if (user.limits.symbolTotal < user.limits.maxSymbols) {
+            if (user.limits.symbolTotal < user.limits.maxSymbols && Date.now() < Date.parse(user.subscriptionEndAt)) {
                 const result = await postPrompt(userMessages.concat([message.text]), chatMessages);
+
                 await User.updateOne(
                     {chatId: chat?.id},
                     {
@@ -187,6 +197,7 @@ bot.on('message', async (ctx: Context) => {
                         userCache: userMessages.concat(message.text)
                     },
                 )
+
                 await ctx.reply(
                     `${result?.text}
                     
