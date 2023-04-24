@@ -45,7 +45,7 @@ commands.command('roles', async (ctx: Context) => {
     const chat = ctx.chat
     const user = await User.findOne({chatId: chat?.id}).populate('roles')
     if (user) {
-        const arrOfUserRoles = Object.entries(user.roles.roles)
+        const arrOfUserRoles = Object.entries(user.roles.roles || {})
         const rolesButtons = Object.entries(user.roles.roles || {}).map((item, index) => {
             return Markup.button.callback(item[0], `role${index}`)
         })

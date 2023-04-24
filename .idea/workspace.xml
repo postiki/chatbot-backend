@@ -7,7 +7,6 @@
     <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="fix: remove role msg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/scenes/addRole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/scenes/addRole.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "development",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/Users/postiki/ChatBot/chatbot-backend/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -83,7 +82,7 @@
       <recent name="$PROJECT_DIR$/src/bot" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -94,8 +93,19 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
