@@ -21,7 +21,7 @@ export const removeRoleScenes = new Scenes.WizardScene('REMOVE_USER_ROLE',
                 roles: updatedRoles
             })
 
-            await ctx.reply(`Remove ${''}`);
+            await ctx.reply(`Remove ${name}`);
             return ctx.scene.leave();
         }
     }
