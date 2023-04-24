@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="fix: remove role msg">
+    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="fix: command 'roles'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/services/postPromt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/services/postPromt.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
       <recent name="$PROJECT_DIR$/src/bot" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -105,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -165,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682337656095</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: command 'roles'">
+      <created>1682342670099</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682342670099</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +195,7 @@
     <MESSAGE value="feature: complete roles" />
     <MESSAGE value="feature: polish roles" />
     <MESSAGE value="fix: remove role msg" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: remove role msg" />
+    <MESSAGE value="fix: command 'roles'" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: command 'roles'" />
   </component>
 </project>

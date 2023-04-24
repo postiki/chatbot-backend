@@ -35,19 +35,18 @@ export const postPrompt = async (userHistory: Array<string>, chatHistory: Array<
         return [...result];
     }
 
-    const role = Object.entries(user.currentRole)[0]
+    const role = user.currentRole ? Object.entries(user.currentRole)[0][1] : ''
 
     const data = {
         model: 'gpt-3.5-turbo',
         messages: [{
             "role": "system",
-            "content": role[1] || ''
+            "content": role,
         }, ...interleaveMessages(userMessages, chatMessages)],
         temperature: 0.7
     };
 
     try {
-        console.log(data)
         const result: any = await axios.post(process.env.OPEN_AI_API_URL || '', data, {
             headers: {
                 'Content-Type': 'application/json',
