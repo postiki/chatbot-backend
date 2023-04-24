@@ -21,7 +21,7 @@ export const addRoleScenes = new Scenes.WizardScene('CREATE_USER_ROLE',
             await UserRoles.findOneAndUpdate({_id: user?.roles}, {
                 roles: {...user?.roles.roles, [name]: role}
             })
-            await ctx.reply('Added a new role');
+            await ctx.reply(`Added a new role ${name}`);
             return ctx.scene.leave();
         } catch (e) {
             console.error(e)

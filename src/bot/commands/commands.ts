@@ -76,7 +76,6 @@ commands.action(/role\d+/, async (ctx: any) => {
         const userRoles = await UserRoles.findOne({_id: user.roles})
         const parsedRoles = Object.entries(userRoles?.roles || {})
         const currentRole = parsedRoles[roleIndex]
-        console.log(currentRole)
         await User.findOneAndUpdate({chatId: chat.id}, {
             currentRole: {
                 [currentRole[0]]: currentRole[1]

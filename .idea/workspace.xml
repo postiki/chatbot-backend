@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="feature: polish roles">
-      <change beforePath="$PROJECT_DIR$/src/bot/scenes/removeRole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/scenes/removeRole.ts" afterDir="false" />
+    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="fix: remove role msg">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/scenes/addRole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/scenes/addRole.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +118,7 @@
       <workItem from="1682081368623" duration="5068000" />
       <workItem from="1682086482079" duration="454000" />
       <workItem from="1682086940356" duration="1210000" />
-      <workItem from="1682088166179" duration="11882000" />
+      <workItem from="1682088166179" duration="12139000" />
     </task>
     <task id="LOCAL-00001" summary="reinit master branch">
       <created>1681910253110</created>
@@ -146,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682337603625</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: remove role msg">
+      <created>1682337656095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682337656095</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +177,7 @@
     <MESSAGE value="update .idea" />
     <MESSAGE value="feature: complete roles" />
     <MESSAGE value="feature: polish roles" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: polish roles" />
+    <MESSAGE value="fix: remove role msg" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: remove role msg" />
   </component>
 </project>
