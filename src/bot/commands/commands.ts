@@ -45,15 +45,16 @@ commands.command('roles', async (ctx: Context) => {
     const chat = ctx.chat
     const user = await User.findOne({chatId: chat?.id}).populate('roles')
     if (user) {
-        const rolesButtons = Object.entries(user.roles.roles).map((item, index) => {
+        const arrOfUserRoles = Object.entries(user.roles.roles)
+        const rolesButtons = Object.entries(user.roles.roles || {}).map((item, index) => {
             return Markup.button.callback(item[0], `role${index}`)
         })
-        const buttons = Markup.inlineKeyboard([
+        const buttons = [
             ...rolesButtons,
             Markup.button.callback('Add role', 'addrole'),
-            Markup.button.callback('Remove role', 'removerole'),
-        ])
-        await ctx.reply('Here is your roles manager menu', buttons)
+        ]
+        arrOfUserRoles.length > 0 && buttons.push(Markup.button.callback('Remove role', 'removerole'))
+        await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard(buttons))
     }
 })
 

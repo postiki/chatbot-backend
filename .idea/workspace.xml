@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="feature: add env front url&#10;feature: test set roles command">
-      <change afterPath="$PROJECT_DIR$/src/bot/bot.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bot/scenes/addRole.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bot/scenes/removeRole.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bot/services/postPromt.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/User.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/UserRoles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+    <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="feature: complete roles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/services/postPromt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/services/postPromt.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +118,7 @@
       <workItem from="1682081368623" duration="5068000" />
       <workItem from="1682086482079" duration="454000" />
       <workItem from="1682086940356" duration="1210000" />
-      <workItem from="1682088166179" duration="11118000" />
+      <workItem from="1682088166179" duration="11799000" />
     </task>
     <task id="LOCAL-00001" summary="reinit master branch">
       <created>1681910253110</created>
@@ -146,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681910490168</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feature: complete roles">
+      <created>1682336954560</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682336954560</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +161,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reinit master branch" />
     <MESSAGE value="update .idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="update .idea" />
+    <MESSAGE value="feature: complete roles" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: complete roles" />
   </component>
 </project>

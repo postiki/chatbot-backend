@@ -41,7 +41,7 @@ export const postPrompt = async (userHistory: Array<string>, chatHistory: Array<
         model: 'gpt-3.5-turbo',
         messages: [{
             "role": "system",
-            "content": role[1]
+            "content": role[1] || ''
         }, ...interleaveMessages(userMessages, chatMessages)],
         temperature: 0.7
     };
