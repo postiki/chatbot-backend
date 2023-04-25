@@ -57,15 +57,12 @@ commands.command('roles', async (ctx: Context) => {
         await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard(buttons))
     }
 })
-
 commands.action('addrole', async (ctx: any) => {
     await ctx.scene.enter('CREATE_USER_ROLE');
 });
-
 commands.action('removerole', async (ctx: any) => {
     await ctx.scene.enter('REMOVE_USER_ROLE');
 });
-
 commands.action(/role\d+/, async (ctx: any) => {
     const chat = ctx.chat
     const roleIndex = parseInt(ctx.match[0].substring(4))
@@ -85,5 +82,8 @@ commands.action(/role\d+/, async (ctx: any) => {
     }
 });
 
+commands.command('img', async (ctx: any) => {
+    await ctx.scene.enter('GENERATE_IMG')
+})
 
 export default commands;

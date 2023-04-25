@@ -5,9 +5,10 @@ import {addRoleScenes} from "./scenes/addRole";
 import config from "../config";
 import {postPrompt} from "./services/postPromt";
 import {removeRoleScenes} from "./scenes/removeRole";
+import {generateImg} from "./scenes/generateImg";
 
 const bot = new Telegraf(config.telegramApiKey);
-const stage = new Scenes.Stage([addRoleScenes, removeRoleScenes]);
+const stage = new Scenes.Stage([addRoleScenes, removeRoleScenes, generateImg]);
 
 bot.use(session());
 bot.use(stage.middleware())
