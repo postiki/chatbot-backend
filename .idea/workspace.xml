@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: add debug string words length">
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: docker config">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +29,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ToolWindowGit.ShowToolbar": "false",
-    "git-widget-placeholder": "feature/redesign__roles__manager",
+    "git-widget-placeholder": "development",
     "node.js.selected.package.tslint": "(autodetect)",
     "ts.external.directory.path": "/Users/postiki/ChatBot/chatbot-backend/node_modules/typescript/lib"
   }
@@ -51,5 +53,9 @@
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feature: docker config" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: docker config" />
   </component>
 </project>
