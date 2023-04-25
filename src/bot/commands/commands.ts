@@ -106,8 +106,8 @@ commands.command('img', async (ctx: any) => {
 commands.command('newchat', async (ctx: Context) => {
     const chat = ctx.chat
     await User.findOneAndUpdate({chatId: chat?.id}, {
-        userCache: null,
-        chatCache: null
+        userCache: [],
+        chatCache: []
     })
     await ctx.reply('Start new conversation')
 })
