@@ -59,14 +59,16 @@ commands.command('roles', async (ctx: Context) => {
         await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard(buttons))
     }
 })
-
 commands.action('addrole', async (ctx: any) => {
     await ctx.scene.enter('CREATE_USER_ROLE');
 });
 
+
+
 commands.action('droprole', async (ctx: any) => {
     await ctx.scene.enter('DROP_USER_ROLE');
 });
+
 
 commands.action('removerole', async (ctx: any) => {
     const chat = ctx.chat
@@ -76,7 +78,6 @@ commands.action('removerole', async (ctx: any) => {
     })
     await ctx.reply('Success remove role')
 });
-
 
 commands.action(/role\d+/, async (ctx: any) => {
     const chat = ctx.chat
@@ -96,6 +97,11 @@ commands.action(/role\d+/, async (ctx: any) => {
         await ctx.reply(`Now, you are ${currentRole[0]}`)
     }
 });
+
+
+commands.command('img', async (ctx: any) => {
+    await ctx.scene.enter('GENERATE_IMG')
+    })
 
 commands.command('newchat', async (ctx: Context) => {
     const chat = ctx.chat
