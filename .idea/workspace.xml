@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4d02c64e-6093-4d48-87ad-5b868d302b69" name="Changes" comment="fix: command 'roles'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/services/postPromt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/services/postPromt.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/scenes/removeRole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/scenes/removeRole.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,14 +62,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "feature/disable__role",
     "last_opened_file_path": "/Users/postiki/ChatBot/chatbot-backend/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.TypeScript",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
     "ts.external.directory.path": "/Users/postiki/ChatBot/chatbot-backend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }

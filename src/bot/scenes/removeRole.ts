@@ -2,7 +2,7 @@ import {Scenes} from "telegraf";
 import {UserRoles} from "../../models/UserRoles";
 import {User} from "../../models/User";
 
-export const removeRoleScenes = new Scenes.WizardScene('REMOVE_USER_ROLE',
+export const removeRoleScenes = new Scenes.WizardScene('DROP_USER_ROLE',
     async (ctx: any) => {
         await ctx.reply('Write role name');
         return ctx.wizard.next();
