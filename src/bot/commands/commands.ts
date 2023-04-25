@@ -97,5 +97,13 @@ commands.action(/role\d+/, async (ctx: any) => {
     }
 });
 
+commands.command('newchat', async (ctx: Context) => {
+    const chat = ctx.chat
+    await User.findOneAndUpdate({chatId: chat?.id}, {
+        userCache: null,
+        chatCache: null
+    })
+    await ctx.reply('Start new conversation')
+})
 
 export default commands;
