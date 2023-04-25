@@ -1,7 +1,7 @@
 FROM node:14-alpine
-WORKDIR /src
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-CMD ["node", "./public/app.js"]
+CMD ["sh", "-c", "NODE_ENV=production node ./public/app.js"]

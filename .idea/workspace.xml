@@ -80,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682428889728</updated>
-      <workItem from="1682428890794" duration="2605000" />
+      <workItem from="1682428890794" duration="3387000" />
     </task>
     <task id="LOCAL-00001" summary="update dockerfile">
       <created>1682429934209</created>
@@ -110,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682430822884</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update dockerfile">
+      <created>1682431507519</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682431507519</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
