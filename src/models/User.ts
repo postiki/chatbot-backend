@@ -29,8 +29,8 @@ const UserSchema = new mongoose.Schema<UserInterface>({
         symbolTotal: {type: Number, default: 0},
     },
     cacheLength: {type: Number, default: 2},
-    userCache: [{type: String, default: null}],
-    chatCache: [{type: String, default: null}],
+    userCache: [{type: String, default: []}],//TODO migrate to default: []
+    chatCache: [{type: String, default: []}],//TODO migrate to default: []
     currentRole: {type: Object, default: null},
     roles: {type: mongoose.Schema.Types.ObjectId, ref: 'UserRoles'},
 });

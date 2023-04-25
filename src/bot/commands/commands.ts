@@ -51,19 +51,31 @@ commands.command('roles', async (ctx: Context) => {
         })
         const buttons = [
             ...rolesButtons,
-            Markup.button.callback('Add role', 'addrole'),
+            Markup.button.callback('Add role', 'addrole')
         ]
-        arrOfUserRoles.length > 0 && buttons.push(Markup.button.callback('Remove role', 'removerole'))
+        user.currentRole !== null && buttons.push(Markup.button.callback('Remove role', 'removerole'))
+        arrOfUserRoles.length > 0 && buttons.push(Markup.button.callback('Drop role', 'droprole'))
         await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard(buttons))
     }
 })
-
 commands.action('addrole', async (ctx: any) => {
     await ctx.scene.enter('CREATE_USER_ROLE');
 });
 
+
+
+commands.action('droprole', async (ctx: any) => {
+    await ctx.scene.enter('DROP_USER_ROLE');
+});
+
+
 commands.action('removerole', async (ctx: any) => {
-    await ctx.scene.enter('REMOVE_USER_ROLE');
+    const chat = ctx.chat
+
+    await User.findOneAndUpdate({chatId: chat.id}, {
+        currentRole: null,
+    })
+    await ctx.reply('Success remove role')
 });
 
 commands.action(/role\d+/, async (ctx: any) => {
@@ -85,5 +97,18 @@ commands.action(/role\d+/, async (ctx: any) => {
     }
 });
 
+
+commands.command('img', async (ctx: any) => {
+    await ctx.scene.enter('GENERATE_IMG')
+    })
+
+commands.command('newchat', async (ctx: Context) => {
+    const chat = ctx.chat
+    await User.findOneAndUpdate({chatId: chat?.id}, {
+        userCache: [],
+        chatCache: []
+    })
+    await ctx.reply('Start new conversation')
+})
 
 export default commands;
