@@ -53,7 +53,6 @@ commands.command('roles', async (ctx: Context) => {
             ...rolesButtons,
             Markup.button.callback('Add role', 'addrole')
         ]
-        console.log(user.currentRole)
         user.currentRole !== null && buttons.push(Markup.button.callback('Remove role', 'removerole'))
         arrOfUserRoles.length > 0 && buttons.push(Markup.button.callback('Drop role', 'droprole'))
         await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard(buttons))

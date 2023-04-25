@@ -43,7 +43,8 @@ bot.on('message', async (ctx: Context) => {
                     totalTokens: 
                     propmt_tokens:${result?.cost.prompt_tokens}, 
                     completion_tokens:${result?.cost.completion_tokens}, 
-                    total_tokens:${result?.cost.total_tokens}`
+                    total_tokens:${result?.cost.total_tokens}
+                    total_words_string: ${message.text.trim().split(/\s+/).length}`
                 );
             } else {
                 await ctx.reply('Subscription end!')
