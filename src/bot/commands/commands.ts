@@ -100,12 +100,20 @@ commands.action(/role\d+/, async (ctx: any) => {
 });
 
 commands.command('img', async (ctx: any) => {
-    await ctx.scene.enter('GENERATE_IMG')
+    const chat: any = ctx.chat
+    const user: any = await User.findOne({chatId: chat.id})
+    if (user) {
+        if (user.imgTotal > user.maxImg) {
+            await ctx.reply('Subscription end')
+        } else {
+            await ctx.scene.enter('GENERATE_IMG')
+        }
+    }
 })
 
 commands.command('newchat', async (ctx: Context) => {
-    const chat = ctx.chat
-    await User.findOneAndUpdate({chatId: chat?.id}, {
+    const chat: any = ctx.chat
+    await User.findOneAndUpdate({chatId: chat.id}, {
         userCache: [],
         chatCache: []
     })

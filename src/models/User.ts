@@ -1,6 +1,5 @@
-import mongoose from "mongoose";
+import mongoose, {Model} from "mongoose";
 import {UserRolesInterface} from "./UserRoles";
-import bot from "../bot/bot";
 
 export interface UserInterface {
     username: string;
@@ -8,10 +7,12 @@ export interface UserInterface {
     paid: boolean;
     subscriptionEndAt: string;
     limits: {
-        maxWords: number; //TODO migrate
-        wordsTotal: number; //TODO migrate
+        maxWords: number;
+        wordsTotal: number;
+        maxImg: number;
+        imgTotal: number;
     };
-    referralId: string; //TODO migrate
+    referralId: string;
     cacheLength: number;
     userCache: string[];
     chatCache: string[];
@@ -29,6 +30,8 @@ const UserSchema = new mongoose.Schema<UserInterface>({
     limits: {
         maxWords: {type: Number, default: 10000},
         wordsTotal: {type: Number, default: 0},
+        maxImg: {type: Number, default: 100}, //TODO migrate
+        imgTotal: {type: Number, default: 0}, //TODO migrate
     },
     referralId: {type: String, default: null},
     cacheLength: {type: Number, default: 2},
