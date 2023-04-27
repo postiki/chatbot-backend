@@ -4,7 +4,7 @@ import {UserRoles} from "../../models/UserRoles";
 
 const commands = new Composer()
 
-commands.start(async (ctx: Context): Promise<void> => {
+commands.start(async (ctx: any): Promise<void> => {
     if (ctx.chat) {
         let chatUsername = '';
         if (ctx.chat.type === 'private') {
@@ -20,7 +20,7 @@ commands.start(async (ctx: Context): Promise<void> => {
                 username: chatUsername,
                 chatId: ctx.chat.id,
                 subscriptionEndAt: nextMonth,
-
+                referralId: ctx.startPayload
             });
             const roles = await UserRoles.create({})
             await User.updateOne({_id: user._id}, {
@@ -36,9 +36,12 @@ commands.start(async (ctx: Context): Promise<void> => {
 
 commands.command('payment', async (ctx: Context) => {
     const chat = ctx.chat
-    await ctx.reply('Pay by:', Markup.inlineKeyboard([
-        [Markup.button.url('Metamask', (process.env.PAYMENT_FRONT_URL || '') + `?userId=${chat?.id}`)]
-    ]));
+    const user = await User.findOne({chatId: chat?.id})
+    if (user) {
+        await ctx.reply('Pay by:', Markup.inlineKeyboard([
+            [Markup.button.url('Metamask', (process.env.PAYMENT_FRONT_URL || '') + `?userId=${chat?.id}&referralId=${user.referralId}`)]
+        ]));
+    }
 })
 
 commands.command('roles', async (ctx: Context) => {
@@ -98,7 +101,7 @@ commands.action(/role\d+/, async (ctx: any) => {
 
 commands.command('img', async (ctx: any) => {
     await ctx.scene.enter('GENERATE_IMG')
-    })
+})
 
 commands.command('newchat', async (ctx: Context) => {
     const chat = ctx.chat

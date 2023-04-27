@@ -25,13 +25,13 @@ bot.on('message', async (ctx: Context) => {
             const userMessages = user.userCache.length < user.cacheLength ? user.userCache : user.userCache.slice(-user.cacheLength)
             const chatMessages = user.chatCache.length < user.cacheLength ? user.chatCache : user.chatCache.slice(-user.cacheLength)
 
-            if (user.limits.symbolTotal < user.limits.maxSymbols && Date.now() < Date.parse(user.subscriptionEndAt)) {
+            if (user.limits.wordsTotal < user.limits.maxWords && Date.now() < Date.parse(user.subscriptionEndAt)) {
                 const result = await postPrompt(userMessages.concat([message.text]), chatMessages, user);
 
                 await User.updateOne(
                     {chatId: chat?.id},
                     {
-                        $inc: {"limits.symbolTotal": (message.text).length},
+                        $inc: {"limits.wordsTotal": message.text.trim().split(/\s+/).length},
                         chatCache: chatMessages.concat(result?.text || ''),
                         userCache: userMessages.concat(message.text)
                     },
