@@ -1,5 +1,6 @@
 import {Scenes} from "telegraf";
 import {openai} from "../services/openAi";
+import {User} from "../../db/models/User";
 
 export const generateImg = new Scenes.WizardScene('GENERATE_IMG',
     async (ctx: any) => {
@@ -17,6 +18,10 @@ export const generateImg = new Scenes.WizardScene('GENERATE_IMG',
                 size: "512x512",
             }
         )
+
+        await User.findOneAndUpdate({chatId: ctx.chat.id}, {
+            $inc: {"limits.imgTotal": 1},
+        })
 
         await ctx.replyWithPhoto(result.data.data[0].url);
         return ctx.scene.leave();
