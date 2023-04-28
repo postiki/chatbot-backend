@@ -1,4 +1,4 @@
-import mongoose, {Model} from "mongoose";
+import mongoose from "mongoose";
 import {UserRolesInterface} from "./UserRoles";
 
 export interface UserInterface {
@@ -30,8 +30,8 @@ const UserSchema = new mongoose.Schema<UserInterface>({
     limits: {
         maxWords: {type: Number, default: 10000},
         wordsTotal: {type: Number, default: 0},
-        maxImg: {type: Number, default: 100}, //TODO migrate
-        imgTotal: {type: Number, default: 0}, //TODO migrate
+        maxImg: {type: Number, default: 100},
+        imgTotal: {type: Number, default: 0},
     },
     referralId: {type: String, default: null},
     cacheLength: {type: Number, default: 2},

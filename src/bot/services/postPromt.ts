@@ -1,5 +1,5 @@
-import axios from "axios";
 import {UserInterface} from "../../models/User";
+import {openai} from "./openAi";
 
 interface PromptResult {
     text: string;
@@ -18,11 +18,8 @@ export const postPrompt = async (userHistory: Array<string>, chatHistory: Array<
         return {"role": "assistant", "content": `${props}`}
     });
 
-    function interleaveMessages(userMessages: { role: string, content: string }[], chatMessages: {
-        role: string,
-        content: string
-    }[]): { role: string, content: string }[] {
-        const result: { role: string, content: string }[] = [];
+    function interleaveMessages(userMessages: any, chatMessages: any) {
+        const result = [];
         const maxLength = Math.max(userMessages.length, chatMessages.length);
         for (let i = 0; i < maxLength; i++) {
             if (userMessages[i]) {
@@ -47,12 +44,7 @@ export const postPrompt = async (userHistory: Array<string>, chatHistory: Array<
     };
 
     try {
-        const result: any = await axios.post(process.env.OPEN_AI_API_URL || '', data, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY || ''}`
-            }
-        })
+        const result: any = await openai.createChatCompletion(data)
 
         return {text: result.data.choices[0].message.content, cost: result.data.usage}
     } catch (e) {
