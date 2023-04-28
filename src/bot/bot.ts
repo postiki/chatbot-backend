@@ -1,16 +1,21 @@
 import {Context, Scenes, session, Telegraf} from "telegraf";
-import {User} from "../models/User";
+import {User} from "../db/models/User";
 import commands from "./commands/commands";
 import {addRoleScenes} from "./scenes/addRole";
 import config from "../config";
 import {postPrompt} from "./services/postPromt";
 import {removeRoleScenes} from "./scenes/removeRole";
 import {generateImg} from "./scenes/generateImg";
-import {openai} from "./services/openAi";
-import {CreateCompletionRequest} from "openai/api";
 
 const bot = new Telegraf(config.telegramApiKey);
 const stage = new Scenes.Stage([addRoleScenes, removeRoleScenes, generateImg]);
+
+bot.use((ctx, next) => {
+    return next().catch(async (err) => {
+        console.error('Error:', err)
+        await ctx.reply('Something went wrong please try again')
+    })
+})
 
 bot.use(session());
 bot.use(stage.middleware())
@@ -43,7 +48,7 @@ bot.on('message', async (ctx: Context) => {
                 await ctx.reply(
                     `${result?.text}
                     
-                    totalTokens:{
+                    totalTokens: {
                         total_words_string: ${message.text.trim().split(/\s+/).length},
                         responseTime: ${end - start}
                     }`
@@ -54,7 +59,6 @@ bot.on('message', async (ctx: Context) => {
         }
     } catch (e) {
         console.error(e)
-        await ctx.reply('Something went wrong please try again')
     }
 });
 

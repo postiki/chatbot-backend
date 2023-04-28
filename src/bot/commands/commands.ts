@@ -1,6 +1,6 @@
 import {Composer, Context, Markup} from "telegraf";
-import {User, UserInterface} from "../../models/User";
-import {UserRoles} from "../../models/UserRoles";
+import {User, UserInterface} from "../../db/models/User";
+import {UserRoles} from "../../db/models/UserRoles";
 
 const commands = new Composer()
 
