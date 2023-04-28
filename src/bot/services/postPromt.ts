@@ -1,4 +1,4 @@
-import {UserInterface} from "../../models/User";
+import {UserInterface} from "../../db/models/User";
 import {openai} from "./openAi";
 
 interface PromptResult {
