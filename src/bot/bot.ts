@@ -6,6 +6,8 @@ import config from "../config";
 import {postPrompt} from "./services/postPromt";
 import {removeRoleScenes} from "./scenes/removeRole";
 import {generateImg} from "./scenes/generateImg";
+import {openai} from "./services/openAi";
+import {CreateCompletionRequest} from "openai/api";
 
 const bot = new Telegraf(config.telegramApiKey);
 const stage = new Scenes.Stage([addRoleScenes, removeRoleScenes, generateImg]);
@@ -15,6 +17,7 @@ bot.use(stage.middleware())
 bot.use(commands.middleware())
 
 bot.on('message', async (ctx: Context) => {
+
     const message: any = ctx.message
     const chat = ctx.chat
 
@@ -26,8 +29,9 @@ bot.on('message', async (ctx: Context) => {
             const chatMessages = user.chatCache.length < user.cacheLength ? user.chatCache : user.chatCache.slice(-user.cacheLength)
 
             if (user.limits.wordsTotal < user.limits.maxWords && Date.now() < Date.parse(user.subscriptionEndAt)) {
+                const start = Date.now()
                 const result = await postPrompt(userMessages.concat([message.text]), chatMessages, user);
-
+                const end = Date.now();
                 await User.updateOne(
                     {chatId: chat?.id},
                     {
@@ -36,15 +40,13 @@ bot.on('message', async (ctx: Context) => {
                         userCache: userMessages.concat(message.text)
                     },
                 )
-
                 await ctx.reply(
                     `${result?.text}
                     
-                    totalTokens: 
-                    propmt_tokens:${result?.cost.prompt_tokens}, 
-                    completion_tokens:${result?.cost.completion_tokens}, 
-                    total_tokens:${result?.cost.total_tokens}
-                    total_words_string: ${message.text.trim().split(/\s+/).length}`
+                    totalTokens:{
+                        total_words_string: ${message.text.trim().split(/\s+/).length},
+                        responseTime: ${end - start}
+                    }`
                 );
             } else {
                 await ctx.reply('Subscription end!')
@@ -52,6 +54,7 @@ bot.on('message', async (ctx: Context) => {
         }
     } catch (e) {
         console.error(e)
+        await ctx.reply('Something went wrong please try again')
     }
 });
 
