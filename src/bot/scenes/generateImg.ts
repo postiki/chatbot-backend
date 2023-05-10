@@ -4,7 +4,7 @@ import {User} from "../../db/models/User";
 
 export const generateImg = new Scenes.WizardScene('GENERATE_IMG',
     async (ctx: any) => {
-        await ctx.reply('Write img prompt, max 1000 symbols');
+            await ctx.reply('Write img prompt, max 1000 symbols');
         return ctx.wizard.next();
     },
     async (ctx: any) => {

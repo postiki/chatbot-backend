@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: add limits for image generation">
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: add increment prompt img">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/bot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/bot.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/services/postPromt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/services/postPromt.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tscongfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot/scenes/generateImg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/scenes/generateImg.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,25 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="postiki" />
+        <option name="repository" value="chatbot-backend" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="33234cc1-fcca-46f8-8d83-9123be51c80b" />
+        <option name="url" value="git@github.com:postiki/chatbot-backend.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/bot/commands/commands.ts" root0="FORCE_HIGHLIGHTING" />
@@ -47,7 +65,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/db" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -58,9 +81,20 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -73,7 +107,10 @@
       <option name="presentableId" value="Default" />
       <updated>1682595556552</updated>
       <workItem from="1682595557610" duration="198000" />
-      <workItem from="1682595761264" duration="7744000" />
+      <workItem from="1682595761264" duration="14430000" />
+      <workItem from="1683190981739" duration="11618000" />
+      <workItem from="1683534019965" duration="4411000" />
+      <workItem from="1683622340448" duration="1933000" />
     </task>
     <task id="LOCAL-00001" summary="feature: add limits for image generation">
       <created>1682595730711</created>
@@ -82,7 +119,28 @@
       <option name="project" value="LOCAL" />
       <updated>1682595730711</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor: prompt fetch&#10;&#10;feature: debug menu only words length and response time">
+      <created>1682678460765</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682678460765</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feature: add middleware for not drop runtime&#10;feature: add slice prompt for image generation">
+      <created>1682681095233</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682681095233</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feature: add increment prompt img">
+      <created>1682690241881</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682690241881</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,7 +157,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="development" />
                       </list>
                     </value>
                   </entry>
@@ -114,6 +172,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feature: docker config" />
     <MESSAGE value="feature: add limits for image generation" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: add limits for image generation" />
+    <MESSAGE value="refactor: prompt fetch&#10;&#10;feature: debug menu only words length and response time" />
+    <MESSAGE value="feature: add middleware for not drop runtime&#10;feature: add slice prompt for image generation" />
+    <MESSAGE value="feature: add increment prompt img" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: add increment prompt img" />
   </component>
 </project>

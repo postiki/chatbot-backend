@@ -3,9 +3,9 @@ import {User} from "../db/models/User";
 import commands from "./commands/commands";
 import {addRoleScenes} from "./scenes/addRole";
 import config from "../config";
-import {postPrompt} from "./services/postPromt";
 import {removeRoleScenes} from "./scenes/removeRole";
 import {generateImg} from "./scenes/generateImg";
+import {postPrompt} from "./services/postPromt";
 
 const bot = new Telegraf(config.telegramApiKey);
 const stage = new Scenes.Stage([addRoleScenes, removeRoleScenes, generateImg]);
@@ -22,7 +22,6 @@ bot.use(stage.middleware())
 bot.use(commands.middleware())
 
 bot.on('message', async (ctx: Context) => {
-
     const message: any = ctx.message
     const chat = ctx.chat
 
@@ -47,11 +46,11 @@ bot.on('message', async (ctx: Context) => {
                 )
                 await ctx.reply(
                     `${result?.text}
-                    
+
                     totalTokens: {
                         total_words_string: ${message.text.trim().split(/\s+/).length},
                         responseTime: ${end - start}
-                    }`
+                    }`,
                 );
             } else {
                 await ctx.reply('Subscription end!')
