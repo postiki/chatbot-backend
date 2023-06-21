@@ -126,8 +126,8 @@ commands.hears('How2Pay', async (ctx: Context) => {
             '6\\.  Wait\n' +
             '7\\.  Success'
             , Markup.inlineKeyboard([
-            [Markup.button.url('Metamask', (process.env.PAYMENT_FRONT_URL || '') + `?userId=${chat?.id}&referralId=${user.referralId}`)]
-        ]));
+                [Markup.button.url('Metamask', (process.env.PAYMENT_FRONT_URL || '') + `?userId=${chat?.id}&referralId=${user.referralId}`)]
+            ]));
     }
 })
 
@@ -136,7 +136,7 @@ commands.command('img', async (ctx: any) => {
     const chat: any = ctx.chat
     const user: any = await User.findOne({chatId: chat.id})
     if (user) {
-        if (user.imgTotal > user.maxImg) {
+        if (user.imgTotal > user.maxImg && Date.now() < Date.parse(user.subscriptionEndAt)) {
             await ctx.reply('Subscription end')
         } else {
             await ctx.scene.enter('GENERATE_IMG')
