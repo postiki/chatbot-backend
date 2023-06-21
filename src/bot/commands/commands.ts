@@ -119,7 +119,7 @@ commands.hears('How2Pay', async (ctx: Context) => {
     if (user) {
         await ctx.replyWithMarkdownV2(
             '1\\.  Connect your wallet\n' +
-            '2\\.  Click pay button\n' +
+            '2\\.  Click connect button, then pay button\n' +
             '3\\.  Confirm approve transaction in your wallet\n' +
             '4\\.  Wait\n' +
             '5\\.  Confirm pay transaction in your wallet\n' +

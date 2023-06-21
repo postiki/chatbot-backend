@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: polish texts">
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="fix: subscription check on img prompt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
     </list>
@@ -154,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683743590682</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: subscription check on img prompt">
+      <created>1687355043190</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687355043190</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +197,7 @@
     <MESSAGE value="feature: add middleware for not drop runtime&#10;feature: add slice prompt for image generation" />
     <MESSAGE value="feature: add increment prompt img" />
     <MESSAGE value="feature: polish texts" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: polish texts" />
+    <MESSAGE value="fix: subscription check on img prompt" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: subscription check on img prompt" />
   </component>
 </project>
