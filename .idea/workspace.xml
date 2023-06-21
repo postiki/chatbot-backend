@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: add increment prompt img">
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: polish texts">
+      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/bot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/bot.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/scenes/generateImg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/scenes/generateImg.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/postiki/ChatBot/chatbot-backend/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -110,7 +109,15 @@
       <workItem from="1682595761264" duration="14430000" />
       <workItem from="1683190981739" duration="11618000" />
       <workItem from="1683534019965" duration="4411000" />
-      <workItem from="1683622340448" duration="1933000" />
+      <workItem from="1683622340448" duration="2522000" />
+      <workItem from="1683818230908" duration="1204000" />
+      <workItem from="1683896386188" duration="605000" />
+      <workItem from="1684147930233" duration="604000" />
+      <workItem from="1684963460666" duration="367000" />
+      <workItem from="1684963895392" duration="169000" />
+      <workItem from="1684964153025" duration="1124000" />
+      <workItem from="1684965850663" duration="1756000" />
+      <workItem from="1687354339414" duration="58000" />
     </task>
     <task id="LOCAL-00001" summary="feature: add limits for image generation">
       <created>1682595730711</created>
@@ -140,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682690241881</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feature: polish texts">
+      <created>1683743590682</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683743590682</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +189,7 @@
     <MESSAGE value="refactor: prompt fetch&#10;&#10;feature: debug menu only words length and response time" />
     <MESSAGE value="feature: add middleware for not drop runtime&#10;feature: add slice prompt for image generation" />
     <MESSAGE value="feature: add increment prompt img" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: add increment prompt img" />
+    <MESSAGE value="feature: polish texts" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: polish texts" />
   </component>
 </project>
