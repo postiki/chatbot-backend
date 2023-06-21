@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema<UserInterface>({
     limits: {
         maxWords: {type: Number, default: 2000},
         wordsTotal: {type: Number, default: 0},
-        maxImg: {type: Number, default: 100},
+        maxImg: {type: Number, default: 10},
         imgTotal: {type: Number, default: 0},
     },
     referralId: {type: String, default: null},
