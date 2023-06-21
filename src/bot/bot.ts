@@ -26,9 +26,7 @@ bot.on('message', async (ctx: Context) => {
             const chatMessages = user.chatCache.length < user.cacheLength ? user.chatCache : user.chatCache.slice(-user.cacheLength)
 
             if (user.limits.wordsTotal < user.limits.maxWords && Date.now() < Date.parse(user.subscriptionEndAt)) {
-                const start = Date.now()
                 const result = await postPrompt(userMessages.concat([message.text]), chatMessages, user);
-                const end = Date.now();
                 await User.updateOne(
                     {chatId: chat?.id},
                     {

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: update bot api key">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: update bot error catcher">
       <change beforePath="$PROJECT_DIR$/src/bot/bot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/bot.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/models/User.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687360809357</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feature: update bot error catcher">
+      <created>1687362732287</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687362732287</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +221,7 @@
     <MESSAGE value="fix: subscription check on img prompt" />
     <MESSAGE value="feature: update user manual about pay" />
     <MESSAGE value="feature: update bot api key" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: update bot api key" />
+    <MESSAGE value="feature: update bot error catcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: update bot error catcher" />
   </component>
 </project>

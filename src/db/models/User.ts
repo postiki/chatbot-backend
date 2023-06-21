@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema<UserInterface>({
     paid: {type: Boolean, default: false},
     subscriptionEndAt: {type: String, default: null},
     limits: {
-        maxWords: {type: Number, default: 10000},
+        maxWords: {type: Number, default: 2000},
         wordsTotal: {type: Number, default: 0},
         maxImg: {type: Number, default: 100},
         imgTotal: {type: Number, default: 0},

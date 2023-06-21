@@ -56,7 +56,7 @@ commands.start(async (ctx: any): Promise<void> => {
                 '\*Please report all bugs and mistakes to [t\\.me/postikiDev](http://t.me/postikiDev)*'
             )
             await ctx.replyWithMarkdownV2(
-                'For a starter, here are your 10,000 words and 10 images for free\\!',
+                'For a starter, here are your 2,000 words and 10 images for free\\!',
                 Markup.keyboard([
                     ['About Eva', 'Support'],
                     ['How2use', 'How2Pay',],
