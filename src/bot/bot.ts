@@ -10,13 +10,6 @@ import {postPrompt} from "./services/postPromt";
 const bot = new Telegraf(config.telegramApiKey);
 const stage = new Scenes.Stage([addRoleScenes, removeRoleScenes, generateImg]);
 
-bot.use((ctx, next) => {
-    return next().catch(async (err) => {
-        console.error('Error:', err)
-        await ctx.reply('Something went wrong please try again')
-    })
-})
-
 bot.use(session());
 bot.use(stage.middleware())
 bot.use(commands.middleware())
@@ -44,14 +37,7 @@ bot.on('message', async (ctx: Context) => {
                         userCache: userMessages.concat(message.text)
                     },
                 )
-                await ctx.reply(
-                    `${result?.text}
-
-                    totalTokens: {
-                        total_words_string: ${message.text.trim().split(/\s+/).length},
-                        responseTime: ${end - start}
-                    }`,
-                );
+                await ctx.reply(`${result?.text}`);
             } else {
                 await ctx.reply('Subscription end!')
             }
@@ -60,5 +46,13 @@ bot.on('message', async (ctx: Context) => {
         console.error(e)
     }
 });
+
+
+bot.use((ctx, next) => {
+    return next().catch(async (err) => {
+        console.error('Error:', err)
+        await ctx.reply('Something went wrong please try again')
+    })
+})
 
 export default bot;
