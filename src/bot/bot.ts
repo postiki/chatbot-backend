@@ -24,8 +24,9 @@ bot.on('message', async (ctx: Context) => {
         if (user) {
             const userMessages = user.userCache.length < user.cacheLength ? user.userCache : user.userCache.slice(-user.cacheLength)
             const chatMessages = user.chatCache.length < user.cacheLength ? user.chatCache : user.chatCache.slice(-user.cacheLength)
-
-            if (user.limits.wordsTotal < user.limits.maxWords && Date.now() < Date.parse(user.subscriptionEndAt)) {
+            if (user.limits.wordsTotal >= user.limits.maxWords || Date.now() >= Date.parse(user.subscriptionEndAt)) {
+                await ctx.reply('Subscription end!')
+            } else {
                 const result = await postPrompt(userMessages.concat([message.text]), chatMessages, user);
                 await User.updateOne(
                     {chatId: chat?.id},
@@ -36,8 +37,6 @@ bot.on('message', async (ctx: Context) => {
                     },
                 )
                 await ctx.reply(`${result?.text}`);
-            } else {
-                await ctx.reply('Subscription end!')
             }
         }
     } catch (e) {

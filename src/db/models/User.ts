@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema<UserInterface>({
         imgTotal: {type: Number, default: 0},
     },
     referralId: {type: String, default: null},
-    cacheLength: {type: Number, default: 2},
+    cacheLength: {type: Number, default: 1},
     userCache: [{type: String, default: []}],
     chatCache: [{type: String, default: []}],
     currentRole: {type: Object, default: null},

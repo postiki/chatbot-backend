@@ -136,7 +136,7 @@ commands.command('img', async (ctx: any) => {
     const chat: any = ctx.chat
     const user: any = await User.findOne({chatId: chat.id})
     if (user) {
-        if (user.imgTotal > user.maxImg && Date.now() < Date.parse(user.subscriptionEndAt)) {
+        if (user.limits.imgTotal >= user.limits.maxImg || Date.now() >= Date.parse(user.subscriptionEndAt)) {
             await ctx.reply('Subscription end')
         } else {
             await ctx.scene.enter('GENERATE_IMG')
