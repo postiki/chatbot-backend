@@ -40,7 +40,11 @@ bot.on('message', async (ctx: Context) => {
             }
         }
     } catch (e) {
-        console.error(e)
+        const userState =  await User.findOne({chatId: user.chatId})
+        if(userState?.username === 'postiki'){
+            // @ts-ignore
+            await ctx.reply(e.message || 'error');
+        }
     }
 });
 

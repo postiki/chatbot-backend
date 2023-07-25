@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: update starter pack limits">
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="fix: users limits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/bot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/bot.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/commands/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/commands/commands.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/models/User.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +118,16 @@
       <workItem from="1684964153025" duration="1124000" />
       <workItem from="1684965850663" duration="1756000" />
       <workItem from="1687354339414" duration="58000" />
+      <workItem from="1687771105460" duration="33000" />
+      <workItem from="1687771210865" duration="1820000" />
+      <workItem from="1687869787379" duration="345000" />
+      <workItem from="1687870151317" duration="3681000" />
+      <workItem from="1687948226670" duration="3791000" />
+      <workItem from="1688378240070" duration="357000" />
+      <workItem from="1688482157325" duration="2231000" />
+      <workItem from="1688556401308" duration="650000" />
+      <workItem from="1689948059130" duration="649000" />
+      <workItem from="1690282245357" duration="355000" />
     </task>
     <task id="LOCAL-00001" summary="feature: add limits for image generation">
       <created>1682595730711</created>
@@ -198,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687364430376</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix: users limits">
+      <created>1687436731457</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687436731457</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +254,7 @@
     <MESSAGE value="feature: update bot api key" />
     <MESSAGE value="feature: update bot error catcher" />
     <MESSAGE value="feature: update starter pack limits" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: update starter pack limits" />
+    <MESSAGE value="fix: users limits" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: users limits" />
   </component>
 </project>
