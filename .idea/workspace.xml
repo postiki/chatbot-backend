@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="fix: users limits">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a978db50-fee6-44e0-98a9-cfda9f9af73d" name="Changes" comment="feature: catch error for admin">
       <change beforePath="$PROJECT_DIR$/src/bot/bot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/bot.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +126,7 @@
       <workItem from="1688482157325" duration="2231000" />
       <workItem from="1688556401308" duration="650000" />
       <workItem from="1689948059130" duration="649000" />
-      <workItem from="1690282245357" duration="355000" />
+      <workItem from="1690282245357" duration="434000" />
     </task>
     <task id="LOCAL-00001" summary="feature: add limits for image generation">
       <created>1682595730711</created>
@@ -213,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687436731457</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feature: catch error for admin">
+      <option name="closed" value="true" />
+      <created>1690282615555</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1690282615555</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +262,7 @@
     <MESSAGE value="feature: update bot error catcher" />
     <MESSAGE value="feature: update starter pack limits" />
     <MESSAGE value="fix: users limits" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: users limits" />
+    <MESSAGE value="feature: catch error for admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: catch error for admin" />
   </component>
 </project>

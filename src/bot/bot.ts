@@ -40,7 +40,8 @@ bot.on('message', async (ctx: Context) => {
             }
         }
     } catch (e) {
-        const userState =  await User.findOne({chatId: user.chatId})
+        const chat = ctx.chat
+        const userState =  await User.findOne({chatId: chat?.id})
         if(userState?.username === 'postiki'){
             // @ts-ignore
             await ctx.reply(e.message || 'error');
