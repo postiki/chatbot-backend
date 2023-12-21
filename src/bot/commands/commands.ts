@@ -153,59 +153,59 @@ commands.command('newchat', async (ctx: Context) => {
     await ctx.reply('Start new conversation')
 })
 
-// commands.command('roles', async (ctx: Context) => {
-//     const chat = ctx.chat
-//     const user = await User.findOne({chatId: chat?.id}).populate('roles')
-//     if (user) {
-//         const arrOfUserRoles = Object.entries(user.roles.roles || {})
-//         const rolesButtons = Object.entries(user.roles.roles || {}).map((item, index) => {
-//             return Markup.button.callback(item[0], `role${index}`)
-//         })
-//
-//         const controlsButtons = [
-//             Markup.button.callback('Add role', 'addrole')
-//         ]
-//         user.currentRole !== null && controlsButtons.push(Markup.button.callback('Remove role', 'removerole'))
-//         arrOfUserRoles.length > 0 && controlsButtons.push(Markup.button.callback('Delete role', 'deleterole'))
-//
-//
-//         await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard([
-//             [...rolesButtons],
-//             [...controlsButtons]
-//         ]))
-//     }
-// })
-// commands.action('addrole', async (ctx: any) => {
-//     await ctx.scene.enter('CREATE_USER_ROLE');
-// });
-// commands.action('deleterole', async (ctx: any) => {
-//     await ctx.scene.enter('DROP_USER_ROLE');
-// });
-// commands.action('removerole', async (ctx: any) => {
-//     const chat = ctx.chat
-//
-//     await User.findOneAndUpdate({chatId: chat.id}, {
-//         currentRole: null,
-//     })
-//     await ctx.reply('Success remove role')
-// });
-// commands.action(/role\d+/, async (ctx: any) => {
-//     const chat = ctx.chat
-//     const roleIndex = parseInt(ctx.match[0].substring(4))
-//
-//     const user = await User.findOne({chatId: chat.id})
-//
-//     if (user) {
-//         const userRoles = await UserRoles.findOne({_id: user.roles})
-//         const parsedRoles = Object.entries(userRoles?.roles || {})
-//         const currentRole = parsedRoles[roleIndex]
-//         await User.findOneAndUpdate({chatId: chat.id}, {
-//             currentRole: {
-//                 [currentRole[0]]: currentRole[1]
-//             }
-//         })
-//         await ctx.reply(`Now, you are ${currentRole[0]}`)
-//     }
-// });
+commands.command('roles', async (ctx: Context) => {
+    const chat = ctx.chat
+    const user = await User.findOne({chatId: chat?.id}).populate('roles')
+    if (user) {
+        const arrOfUserRoles = Object.entries(user.roles.roles || {})
+        const rolesButtons = Object.entries(user.roles.roles || {}).map((item, index) => {
+            return Markup.button.callback(item[0], `role${index}`)
+        })
+
+        const controlsButtons = [
+            Markup.button.callback('Add role', 'addrole')
+        ]
+        user.currentRole !== null && controlsButtons.push(Markup.button.callback('Remove role', 'removerole'))
+        arrOfUserRoles.length > 0 && controlsButtons.push(Markup.button.callback('Delete role', 'deleterole'))
+
+
+        await ctx.reply('Here is your roles manager menu', Markup.inlineKeyboard([
+            [...rolesButtons],
+            [...controlsButtons]
+        ]))
+    }
+})
+commands.action('addrole', async (ctx: any) => {
+    await ctx.scene.enter('CREATE_USER_ROLE');
+});
+commands.action('deleterole', async (ctx: any) => {
+    await ctx.scene.enter('DROP_USER_ROLE');
+});
+commands.action('removerole', async (ctx: any) => {
+    const chat = ctx.chat
+
+    await User.findOneAndUpdate({chatId: chat.id}, {
+        currentRole: null,
+    })
+    await ctx.reply('Success remove role')
+});
+commands.action(/role\d+/, async (ctx: any) => {
+    const chat = ctx.chat
+    const roleIndex = parseInt(ctx.match[0].substring(4))
+
+    const user = await User.findOne({chatId: chat.id})
+
+    if (user) {
+        const userRoles = await UserRoles.findOne({_id: user.roles})
+        const parsedRoles = Object.entries(userRoles?.roles || {})
+        const currentRole = parsedRoles[roleIndex]
+        await User.findOneAndUpdate({chatId: chat.id}, {
+            currentRole: {
+                [currentRole[0]]: currentRole[1]
+            }
+        })
+        await ctx.reply(`Now, you are ${currentRole[0]}`)
+    }
+});
 
 export default commands;
